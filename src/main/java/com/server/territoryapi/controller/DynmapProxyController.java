@@ -19,6 +19,7 @@ public class DynmapProxyController {
 
     public DynmapProxyController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
+        System.out.println("DynmapProxyController создан!");
     }
 
     /**
