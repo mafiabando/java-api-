@@ -25,7 +25,7 @@ public class DynmapProxyController {
     /**
      * Проксируем ВСЁ: API, CSS, JS, изображения
      */
-    @GetMapping("/dynmap/**")
+    @GetMapping("/**")
     public ResponseEntity<byte[]> proxyDynmapGet(HttpServletRequest request) {
         try {
             // Извлекаем путь после /dynmap

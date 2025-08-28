@@ -25,7 +25,7 @@ public class TerritoryApiApplication {
 
         @EventListener(ContextRefreshedEvent.class)
         public void logAllEndpoints() {
-            System.out.println("🔍 === СПИСОК ВСЕХ ЗАРЕГИСТРИРОВАННЫХ МАРШРУТОВ ===");
+            System.out.println("🔍 === all registered routes ===");
             requestMappingHandlerMapping.getHandlerMethods().forEach((key, value) -> {
                 System.out.println("📌 " + key + " -> " + value.getMethod().getDeclaringClass().getSimpleName() + "." + value.getMethod().getName());
             });
