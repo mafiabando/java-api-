@@ -15,7 +15,7 @@ import java.util.*;
 public class DynmapProxyController {
 
     private final RestTemplate restTemplate;
-    private final String DYNMAP_BASE_URL = "http://localhost:8123";
+    private final String DYNMAP_BASE_URL = "http://85.198.109.208:8123";
 
     public DynmapProxyController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
