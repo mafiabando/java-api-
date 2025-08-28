@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/dynmap")
 public class DynmapProxyController {
 
     private final RestTemplate restTemplate;
@@ -19,7 +19,7 @@ public class DynmapProxyController {
 
     public DynmapProxyController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
-        System.out.println("DynmapProxyController создан!");
+        System.out.println("DynmapProxyController was created!");
     }
 
     /**
@@ -28,7 +28,7 @@ public class DynmapProxyController {
     @GetMapping("/dynmap/**")
     public ResponseEntity<byte[]> proxyDynmapGet(HttpServletRequest request) {
         try {
-            // Извлекаем путь после /api/dynmap
+            // Извлекаем путь после /dynmap
             String path = extractDynmapPath(request);
             URI targetUrl = UriComponentsBuilder.fromHttpUrl(DYNMAP_BASE_URL)
                     .path(path)
@@ -79,7 +79,7 @@ public class DynmapProxyController {
     /**
      * CORS preflight
      */
-    @RequestMapping(value = "/dynmap/**", method = RequestMethod.OPTIONS)
+    @RequestMapping(value = "/**", method = RequestMethod.OPTIONS)
     public ResponseEntity<Void> handleOptions() {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Access-Control-Allow-Origin", "*");
@@ -91,7 +91,7 @@ public class DynmapProxyController {
     }
 
     /**
-     * Извлекает путь после /api/dynmap
+     * Извлекает путь после /dynmap
      */
     private String extractDynmapPath(HttpServletRequest request) {
         String requestUri = request.getRequestURI();
@@ -99,15 +99,15 @@ public class DynmapProxyController {
         String path = requestUri.substring(contextPath.length());
 
         // Удаляем /api/dynmap
-        if (path.startsWith("/api/dynmap")) {
-            path = path.substring("/api/dynmap".length());
+        if (path.startsWith("/dynmap")) {
+            path = path.substring("/dynmap".length());
         }
 
         // Если путь пустой, возвращаем корень
         return path.isEmpty() ? "/" : path;
     }
 
-    @GetMapping("/test")
+    @GetMapping("/test-endpoint")
     public ResponseEntity<String> test() {
         return ResponseEntity.ok()
                 .header("Access-Control-Allow-Origin", "*")

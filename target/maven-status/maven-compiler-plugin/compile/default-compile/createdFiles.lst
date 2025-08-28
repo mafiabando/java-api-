@@ -1,5 +1,6 @@
-com\server\territoryapi\controller\TerritoryController.class
-com\server\territoryapi\controller\DynmapProxyController.class
 com\server\territoryapi\model\TerritoryDTO.class
 com\server\territoryapi\config\AppConfig.class
 com\server\territoryapi\TerritoryApiApplication.class
+com\server\territoryapi\controller\TerritoryController.class
+com\server\territoryapi\controller\DynmapProxyController.class
+com\server\territoryapi\TerritoryApiApplication$EndpointLogger.class
